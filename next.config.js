@@ -1,10 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // Ensures static export
+  reactStrictMode: true,
   images: {
-    unoptimized: true,
+    domains: ['image-enhancer-pro.vercel.app/'], // Add your Vercel domain here
   },
-  distDir: 'out' // Change output directory
-}
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: '/api/:path*',
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig; 
