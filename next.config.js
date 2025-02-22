@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['image-enhancer-pro.vercel.app/'], // Add your Vercel domain here
+    domains: ['image-enhancer-pro.vercel.app'], // Remove the trailing slash
   },
   async rewrites() {
     return [
