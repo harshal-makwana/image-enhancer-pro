@@ -3,7 +3,7 @@ Allow: /
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://image-editer.netlify.app/sitemap.xml
+Sitemap: https://image-enhancer-pro.vercel.app/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 10 
