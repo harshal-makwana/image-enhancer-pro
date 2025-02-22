@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://your-domain.com',
+    url: 'https://image-enhancer-pro.vercel.app/',
     title: 'AI Image Processor | Free Online Photo Editor',
     description: 'Transform your photos with AI-powered enhancement tools. Free online image editor with professional features.',
     siteName: 'AI Image Processor',
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'iVswobRMV0jlNQLUZVDQ_8n-9NL79BCT6rirzLvGTVg',
+    google: 'pWF8-Eur1dFQKi9UEEReEBI-s0v_DXvAoFSDvkJEL6I',
     yandex: 'your-yandex-verification-code'
   },
 
