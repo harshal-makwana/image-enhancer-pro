@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'pWF8-Eur1dFQKi9UEEReEBI-s0v_DXvAoFSDvkJEL6I',
-    yandex: 'your-yandex-verification-code'
+    yandex: ' ed53b787034b805d'
   },
 
 }

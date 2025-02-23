@@ -76,17 +76,23 @@ export default function Home() {
   });
 
   const aiFeatures = [
-    { name: 'Remove Background', value: 'background', icon: '🖼️' },
-    { name: 'Face Retouch', value: 'retouch', icon: '👤' },
-    { name: 'Style Transfer', value: 'style', icon: '🎨' },
-    { name: 'Object Removal', value: 'remove', icon: '🗑️' }
+    { name: 'Auto Enhance', value: 'enhance', icon: '✨' },
+    { name: 'Portrait Mode', value: 'portrait', icon: '👤' },
+    { name: 'Color Effects', value: 'color', icon: '🎨' },
+    { name: 'HDR Effect', value: 'hdr', icon: '🌈' },
+    { name: 'Blur Background', value: 'blur', icon: '🔍' },
+    { name: 'Vintage Look', value: 'vintage', icon: '📷' },
+    { name: 'B&W Pro', value: 'blackwhite', icon: '◾' },
+    { name: 'Sharpen', value: 'sharpen', icon: '⚡' }
   ];
 
   const stylePresets = [
-    { name: 'Van Gogh', value: 'vangogh' },
-    { name: 'Picasso', value: 'picasso' },
-    { name: 'Monet', value: 'monet' },
-    { name: 'Anime', value: 'anime' }
+    { name: 'Warm', value: 'warm' },
+    { name: 'Cool', value: 'cool' },
+    { name: 'Vibrant', value: 'vibrant' },
+    { name: 'Muted', value: 'muted' },
+    { name: 'Sepia', value: 'sepia' },
+    { name: 'Dramatic', value: 'dramatic' }
   ];
 
   useEffect(() => {
@@ -219,7 +225,7 @@ export default function Home() {
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
       <button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className="fixed top-4 right-4 p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700"
+        className="fixed top-4 right-4 z-50 p-2 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700"
       >
         {theme === 'dark' ? (
           <SunIcon className="w-5 h-5 text-yellow-500" />
@@ -228,12 +234,12 @@ export default function Home() {
         )}
       </button>
 
-      <main className="container mx-auto py-12 px-4">
-        <div className="text-center space-y-6 mb-16">
-          <h1 className="text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+      <main className="container mx-auto py-6 md:py-12 px-4">
+        <div className="text-center space-y-4 md:space-y-6 mb-8 md:mb-16">
+          <h1 className="text-4xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
             AI Image Processor
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Transform your images with advanced AI-powered enhancement tools
           </p>
         </div>
@@ -242,39 +248,41 @@ export default function Home() {
           <div
             {...getRootProps()}
             className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg 
-              p-8 text-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 
+              p-4 md:p-8 text-center cursor-pointer hover:border-blue-500 dark:hover:border-blue-400 
               transition-colors bg-white dark:bg-gray-800"
           >
             <input {...getInputProps()} />
             <PhotoIcon className="w-12 h-12 mx-auto text-gray-400" />
-            <p className="mt-2 text-gray-600 dark:text-gray-400">
-              Drag & drop an image here, or click to select
+            <p className="mt-2 text-sm md:text-base text-gray-600 dark:text-gray-400">
+              Tap to upload or drag & drop an image
             </p>
           </div>
         ) : (
-          <div className="space-y-6">
-            {/* Tabs Navigation */}
-            <div className="flex space-x-2 border-b border-gray-200 dark:border-gray-700">
-              {tabs.map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-2 font-medium rounded-t-lg transition-colors
-                    ${activeTab === tab.id 
-                      ? 'bg-blue-500 text-white' 
-                      : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
-                    }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
+          <div className="space-y-4 md:space-y-6">
+            {/* Tabs Navigation - Make scrollable on mobile */}
+            <div className="overflow-x-auto">
+              <div className="flex space-x-2 border-b border-gray-200 dark:border-gray-700 min-w-max">
+                {tabs.map(tab => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-3 md:px-4 py-2 text-sm md:text-base font-medium rounded-t-lg transition-colors whitespace-nowrap
+                      ${activeTab === tab.id 
+                        ? 'bg-blue-500 text-white' 
+                        : 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+                      }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Main Content Area */}
-            <div className="grid grid-cols-2 gap-6">
+            {/* Main Content Area - Stack on mobile */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {/* Original Image */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-4 md:p-6">
+                <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
                   Original Image
                 </h3>
                 <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -287,8 +295,8 @@ export default function Home() {
               </div>
 
               {/* Enhanced Image */}
-              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6">
-                <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-4 md:p-6">
+                <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4">
                   Enhanced Image
                 </h3>
                 <div className="relative aspect-video w-full overflow-hidden rounded-lg">
@@ -362,11 +370,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Controls Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6">
+            {/* Controls Section - Better spacing on mobile */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-4 md:p-6">
               {activeTab === 'crop' && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200">
                     Crop Settings
                   </h3>
                   <div className="space-y-4">
@@ -479,7 +487,7 @@ export default function Home() {
 
               {activeTab === 'enhance' && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200">
                     Enhancement Settings
                   </h3>
                   <div className="grid grid-cols-2 gap-6">
@@ -543,7 +551,7 @@ export default function Home() {
 
               {activeTab === 'filters' && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200">
                     Filters & Effects
                   </h3>
                   <div className="grid grid-cols-3 gap-4">
@@ -566,7 +574,7 @@ export default function Home() {
 
               {activeTab === 'compress' && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200">
                     Format & Compression
                   </h3>
                   <div className="space-y-6">
@@ -632,7 +640,7 @@ export default function Home() {
 
               {activeTab === 'ai' && (
                 <div className="space-y-6">
-                  <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                  <h3 className="text-base md:text-lg font-semibold text-gray-700 dark:text-gray-200">
                     AI Features
                   </h3>
                   
@@ -728,11 +736,11 @@ export default function Home() {
           </div>
         )}
 
-        {/* Add loading indicator */}
+        {/* Loading Indicator - Center on screen */}
         {processing && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4">
-              <div className="animate-spin w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full" />
+            <div className="bg-white dark:bg-gray-800 rounded-lg p-6 space-y-4 mx-4">
+              <div className="animate-spin w-10 h-10 border-4 border-blue-500 border-t-transparent rounded-full mx-auto" />
               <p className="text-center text-gray-700 dark:text-gray-200">Processing image...</p>
             </div>
           </div>
