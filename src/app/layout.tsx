@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   },
   description: 'Professional image editing tools powered by AI. Edit, enhance, crop, remove backgrounds, and apply artistic filters to your photos for free. No signup required.',
   keywords: [
+    'image processor',
+    'ai image processor',
+    'image processor ai',
     'image editor',
     'photo editor',
     'AI image enhancement',
@@ -66,7 +69,7 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'pWF8-Eur1dFQKi9UEEReEBI-s0v_DXvAoFSDvkJEL6I',
-    yandex: ' ed53b787034b805d'
+    yandex: 'ed53b787034b805d'
   },
 
 }
