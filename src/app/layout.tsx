@@ -8,8 +8,8 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   metadataBase: new URL('https://https://image-editer.netlify.app'),
   title: {
-    default: 'AI Image Processor | Free Online Photo Editor',
-    template: '%s | AI Image Processor'
+    default: 'AI Image Enhancer and Upscaler | Free Online Photo Editor and Enhancer ',
+    template: '%s | AI Image Editor and Upscaler'
   },
   description: 'Professional image editing tools powered by AI. Edit, enhance, crop, remove backgrounds, and apply artistic filters to your photos for free. No signup required.',
   keywords: [
